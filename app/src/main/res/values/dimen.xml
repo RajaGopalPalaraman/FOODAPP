@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Login Layout margin and padding  -->
+    <dimen name="activity_login_edit_text_width">200dp</dimen>
+    <dimen name="activity_login_edit_text_padding">5dp</dimen>
+    <dimen name="activity_login_margin">30dp</dimen>
+    <!-- New User Cliche padding -->
+    <dimen name="activity_login_cliche_margin">5dp</dimen>
+    <!-- Registration Activity padding -->
+    <dimen name="activity_registration_layout_margin">20dp</dimen>
+    <!-- CityPage Activity padding and text size -->
+    <dimen name="activity_citypage_layout_padding">5dp</dimen>
+    <dimen name="activity_citypage_title_text_size">30sp</dimen>
+    <dimen name="activity_citypage_title_text_padding_bottom">10dp</dimen>
+    <!-- HotelsPage Activity padding and text size -->
+    <dimen name="activity_hotelspage_layout_padding">5dp</dimen>
+    <dimen name="activity_hotelspage_title_text_size">30sp</dimen>
+    <dimen name="activity_hotelspage_title_text_padding_bottom">10dp</dimen>
+    <!-- ItemPage Activity padding and text size -->
+    <dimen name="activity_itempage_layout_padding">5dp</dimen>
+    <dimen name="activity_itempage_title_text_size">30sp</dimen>
+    <dimen name="activity_itempage_title_text_padding_bottom">10dp</dimen>
+    <dimen name="activity_itempage_selectedItem_margin">10dp</dimen>
+    <dimen name="activity_itempage_footer_textView_padding">5dp</dimen>
+    <!-- Selected Items helper layout padding and text size -->
+    <dimen name="layout_selected_item_item_name_padding">15dp</dimen>
+    <dimen name="layout_selected_item_count_control_layout_width">90dp</dimen>
+    <dimen name="layout_selected_item_count_control_views_width">30dp</dimen>
+    <dimen name="layout_selected_item_item_name_width">200dp</dimen>
+    <dimen name="layout_selected_item_layout_height">30dp</dimen>
+    <dimen name="layout_selected_item_amount_view_margin">20dp</dimen>
+    <dimen name="layout_selected_item_amount_view_width">70dp</dimen>
+    <dimen name="layout_selected_item_margin">7dp</dimen>
+    <!-- Common paddings and sizes -->
+    <dimen name="dummy_padding_width">1dp</dimen>
+    <!-- Order View paddings and text size -->
+    <dimen name="layout_order_view_layout_margin">10dp</dimen>
+    <dimen name="layout_order_view_order_hotel_city_view_text_size">10sp</dimen>
+    <dimen name="layout_order_view_order_user_id_view_text_size">10sp</dimen>
+    <dimen name="layout_order_view_margin_top">5dp</dimen>
+    <dimen name="layout_order_first_line_separator_width">1dp</dimen>
+    <dimen name="layout_order_second_line_separator_width">2dp</dimen>
+    <dimen name="layout_order_view_final_line_margin_top">10dp</dimen>
+</resources>
