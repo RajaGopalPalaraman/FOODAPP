@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: artifacts:Framework">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/app-debug.aar/d88f2ed21d8c0c663dc1d8bd73afbc5f/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/app-debug.aar/d88f2ed21d8c0c663dc1d8bd73afbc5f/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/app-debug.aar/937220c462fc8bc79fac73be0f0090ee/jars/libs/commons-codec-1.4.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/app-debug.aar/937220c462fc8bc79fac73be0f0090ee/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/app-debug.aar/937220c462fc8bc79fac73be0f0090ee/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

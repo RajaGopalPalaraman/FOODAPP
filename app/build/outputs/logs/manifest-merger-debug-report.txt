@@ -7,7 +7,7 @@ INJECTED from E:\AndroidProjects\FoodApp\app\src\main\AndroidManifest.xml:2:1-38
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\7996e1595f63e0173055e24720a53091\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\76f4246c7de955c313da932156dbea8c\AndroidManifest.xml:2:1-11:12
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.1.7] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\android-gif-drawable-1.1.7.aar\e8bce08e6668c2c524da878b446a755b\AndroidManifest.xml:2:1-10:12
-MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:2:1-20:12
+MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:2:1-20:12
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\d6930dd1e580c0cdad56d598f282dc4b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\b241bdd20637548694b49554e7c5cc6a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\c632eb766ad671f6763b23c6598e97d6\AndroidManifest.xml:17:1-22:12
@@ -55,8 +55,8 @@ application
 ADDED from E:\AndroidProjects\FoodApp\app\src\main\AndroidManifest.xml:5:5-36:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\76f4246c7de955c313da932156dbea8c\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\76f4246c7de955c313da932156dbea8c\AndroidManifest.xml:9:5-20
-MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:11:5-18:19
-MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:11:5-18:19
+MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:11:5-18:19
+MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:11:5-18:19
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\04d6b56ac94d22f5e61652ed47ac4326\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\04d6b56ac94d22f5e61652ed47ac4326\AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1c074a1b43fd2cb44f77b2552c9e2bc5\AndroidManifest.xml:22:5-23:19
@@ -131,8 +131,8 @@ MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\ra
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\76f4246c7de955c313da932156dbea8c\AndroidManifest.xml:5:5-7:41
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.1.7] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\android-gif-drawable-1.1.7.aar\e8bce08e6668c2c524da878b446a755b\AndroidManifest.xml:6:5-8:41
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.1.7] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\android-gif-drawable-1.1.7.aar\e8bce08e6668c2c524da878b446a755b\AndroidManifest.xml:6:5-8:41
-MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:7:5-9:41
-MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:7:5-9:41
+MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:7:5-9:41
+MERGED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\d6930dd1e580c0cdad56d598f282dc4b\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\d6930dd1e580c0cdad56d598f282dc4b\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\b241bdd20637548694b49554e7c5cc6a\AndroidManifest.xml:20:5-44
@@ -196,6 +196,6 @@ INJECTED from E:\AndroidProjects\FoodApp\app\src\main\AndroidManifest.xml
 		ADDED from E:\AndroidProjects\FoodApp\app\src\main\AndroidManifest.xml
 		INJECTED from E:\AndroidProjects\FoodApp\app\src\main\AndroidManifest.xml
 activity#com.edot.models.FrameworkTestActivity
-ADDED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:17:9-74
+ADDED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:17:9-74
 	android:name
-		ADDED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\5fde6922325c165f7d84ba5994b815c9\AndroidManifest.xml:17:19-71
+		ADDED from [:Framework] C:\Users\raja-7011\.gradle\caches\transforms-1\files-1.1\app-debug.aar\937220c462fc8bc79fac73be0f0090ee\AndroidManifest.xml:17:19-71
