@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edot.models.HelperUtil;
+import com.edot.network.HttpGETClient;
 
 import java.util.HashMap;
 
@@ -34,24 +35,21 @@ public class HotelsPage extends AppCompatActivity {
         Log.d(AppConstants.LOG_TAG,"Id : " + RClassFieldName);
         Log.d(AppConstants.LOG_TAG,"Name : " + cityChosen);
 
-        Integer resourceID = (Integer) HelperUtil.getFieldFromClass(R.raw.class,null,RClassFieldName);
-        if(cityChosen == null || resourceID == null)
-        {
-            Toast.makeText(this,R.string.error_404,Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-        Log.d(AppConstants.LOG_TAG,"ResourceID : " + resourceID);
-
-        new AsyncTask<Integer,Void,View>(){
+        new AsyncTask<String,Void,View>(){
             @Override
-            protected LinearLayout doInBackground(Integer... integers) {
-                HashMap<String,HashMap<String,String>> map = HelperUtil.readProperties(getResources()
-                                .openRawResource(integers[0]),HotelLinearViewModel.FIELD,
-                        HotelLinearViewModel.ATTR_LIST);
-                LinearLayout l = (LinearLayout) new HotelLinearViewModel(HotelsPage.this)
-                        .renderMap(map);
-                return l;
+            protected LinearLayout doInBackground(String... strings) {
+                HttpGETClient httpGETClient = new HttpGETClient();
+                if (httpGETClient.establishConnection("http://autoiot2019-20.000webhostapp.com/" +
+                        "FoodApp/"+strings[0]+".properties")) {
+                    HashMap<String, HashMap<String, String>> map = HelperUtil.readProperties(httpGETClient
+                                    .getInputStream(), HotelLinearViewModel.FIELD,
+                            HotelLinearViewModel.ATTR_LIST);
+                    httpGETClient.closeConnection();
+                    LinearLayout l = (LinearLayout) new HotelLinearViewModel(HotelsPage.this)
+                            .renderMap(map);
+                    return l;
+                }
+                return null;
             }
 
             @Override
@@ -61,9 +59,16 @@ public class HotelsPage extends AppCompatActivity {
                 TextView textView = findViewById(R.id.hotelTitleTextVView);
                 textView.setText(getResources().getString(R.string.selectHotel,cityChosen));
                 ScrollView scrollView = findViewById(R.id.hotelViewParentLayout);
-                scrollView.addView(view);
+                if (view == null)
+                {
+                    Toast.makeText(HotelsPage.this,R.string.somethingWentWrongCommon
+                            ,Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    scrollView.addView(view);
+                }
             }
-        }.execute(resourceID);
+        }.execute(RClassFieldName);
 
     }
 }

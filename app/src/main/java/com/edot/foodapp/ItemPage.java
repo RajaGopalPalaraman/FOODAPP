@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edot.models.HelperUtil;
+import com.edot.network.HttpGETClient;
 
 import java.util.HashMap;
 
@@ -42,23 +43,27 @@ public class ItemPage extends AppCompatActivity {
         {
             hotelID = hotelID.toLowerCase();
         }
-        Integer resourceID = (Integer) HelperUtil.getFieldFromClass(R.raw.class,null,hotelID);
-        if(hotelName == null || hotelComment == null || resourceID == null)
+        if(hotelName == null || hotelComment == null)
         {
             Toast.makeText(this,R.string.error_404,Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
-        Log.d(AppConstants.LOG_TAG,"ResourceID : " + resourceID);
-        new AsyncTask<Integer,Void,View>(){
+        new AsyncTask<String,Void,View>(){
             @Override
-            protected LinearLayout doInBackground(Integer... integers) {
-                HashMap<String,HashMap<String,String>> map = HelperUtil.readProperties(getResources()
-                                .openRawResource(integers[0]),ItemLinearViewModel.FIELD,
-                        ItemLinearViewModel.ATTR_LIST);
-                LinearLayout l = (LinearLayout) new ItemLinearViewModel(ItemPage.this,controller)
-                        .renderMap(map);
-                return l;
+            protected LinearLayout doInBackground(String... strings) {
+                HttpGETClient httpGETClient = new HttpGETClient();
+                if (httpGETClient.establishConnection("http://autoiot2019-20.000webhostapp.com/" +
+                        "FoodApp/"+strings[0]+".properties")) {
+                    HashMap<String, HashMap<String, String>> map = HelperUtil.readProperties(httpGETClient
+                                    .getInputStream(), ItemLinearViewModel.FIELD,
+                            ItemLinearViewModel.ATTR_LIST);
+                    httpGETClient.closeConnection();
+                    LinearLayout l = (LinearLayout) new ItemLinearViewModel(ItemPage.this, controller)
+                            .renderMap(map);
+                    return l;
+                }
+                return null;
             }
 
             @Override
@@ -72,22 +77,44 @@ public class ItemPage extends AppCompatActivity {
                 textView = findViewById(R.id.itemPagehotelCommentTextView);
                 textView.setText(hotelComment);
                 LinearLayout scrollView = findViewById(R.id.itemViewParentLayout);
-                scrollView.addView(view);
+                if (view == null)
+                {
+                    Toast.makeText(ItemPage.this,R.string.somethingWentWrongCommon
+                            ,Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    scrollView.addView(view);
+                }
             }
-        }.execute(resourceID);
+        }.execute(hotelID);
     }
 
-    public void navigateToBillPage(View view)
+    public void navigateToBillPage(final View view)
     {
+        view.setClickable(false);
         Log.d(AppConstants.LOG_TAG,"Proceed button clicked : "+AppConstants.currentLoggedInUserID);
-        if(OrderHelper.placeOrder(this,AppConstants.currentLoggedInUserID,
-                hotelID,controller.getListOfSelectedItems(),controller.getTotal())) {
-            Toast.makeText(this, R.string.orderPlaced, Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        else {
-            Toast.makeText(this, R.string.orderFailed, Toast.LENGTH_SHORT).show();
-        }
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                return OrderHelper.placeOrder(ItemPage.this,AppConstants.currentLoggedInUserID,
+                        hotelID,controller.getListOfSelectedItems(),controller.getTotal());
+            }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                view.setClickable(true);
+                if (aBoolean)
+                {
+                    Toast.makeText(ItemPage.this, R.string.orderPlaced, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(ItemPage.this, R.string.orderFailed, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.execute();
     }
 
 }
