@@ -20,6 +20,7 @@ public class ItemSelectionController {
     private ArrayList<ItemDataModel> listOfSelectedItems = new ArrayList<>();
     private ArrayList<View> listOfSelectedItemsViews = new ArrayList<>();
 
+    private boolean addData = true;
     private Activity context;
     private ViewGroup rootView;
     private ViewGroup rootViewGroup;
@@ -57,6 +58,7 @@ public class ItemSelectionController {
     }
 
     public ArrayList<ItemDataModel> getListOfSelectedItems() {
+        addData = false;
         return listOfSelectedItems;
     }
 
@@ -95,32 +97,32 @@ public class ItemSelectionController {
 
     public void addItem(@NonNull ItemDataModel itemDataModel)
     {
-        try {
-            itemDataModel.incrementQuantity(1);
+        if (addData) {
+            try {
+                itemDataModel.incrementQuantity(1);
 
-            if (total == 0)
-            {
-                rootView.findViewById(R.id.itemPageFooterLayout).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.itemPageEmptyCartView).setVisibility(View.GONE);
-            }
+                if (total == 0) {
+                    rootView.findViewById(R.id.itemPageFooterLayout).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.itemPageEmptyCartView).setVisibility(View.GONE);
+                }
 
-            total = total + itemDataModel.getCost();
-            int indexOfItem = listOfSelectedItems.indexOf(itemDataModel);
-            if (indexOfItem == -1) {
-                View view = generateSelectedItemView(itemDataModel);
-                rootViewGroup.addView(view);
+                total = total + itemDataModel.getCost();
+                int indexOfItem = listOfSelectedItems.indexOf(itemDataModel);
+                if (indexOfItem == -1) {
+                    View view = generateSelectedItemView(itemDataModel);
+                    rootViewGroup.addView(view);
 
-                listOfSelectedItems.add(itemDataModel);
-                listOfSelectedItemsViews.add(view);
+                    listOfSelectedItems.add(itemDataModel);
+                    listOfSelectedItemsViews.add(view);
+                } else {
+                    View view = listOfSelectedItemsViews.get(indexOfItem);
+                    updateItemViewGroup(itemDataModel, view);
+                }
+                TextView textView = rootView.findViewById(R.id.itemPageFooterLayout).findViewById(R.id.netCostView);
+                textView.setText(context.getResources().getString(R.string.totalCost, total));
+            } catch (Exception e) {
+                Log.d(AppConstants.LOG_TAG, "Exception in ItemSelectionController::addItem : " + e.getLocalizedMessage());
             }
-            else {
-                View view = listOfSelectedItemsViews.get(indexOfItem);
-                updateItemViewGroup(itemDataModel,view);
-            }
-            TextView textView = rootView.findViewById(R.id.itemPageFooterLayout).findViewById(R.id.netCostView);
-            textView.setText(context.getResources().getString(R.string.totalCost,total));
-        } catch (Exception e) {
-            Log.d(AppConstants.LOG_TAG,"Exception in ItemSelectionController::addItem : "+e.getLocalizedMessage());
         }
     }
 

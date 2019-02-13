@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.edot.foodapp.data.ItemDataModel;
 import com.edot.models.HelperUtil;
+import com.edot.network.HttpGETClient;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -55,10 +56,16 @@ public class OrderPage extends AppCompatActivity {
     private HashMap<String,HashMap<String,String>> generateMap(List<OrderHelper.OrderedDataModel> list) {
         HashMap<String,HashMap<String,String>> map = new HashMap<>();
         HashMap<String,HashMap<String,String>> cityIDMap = new HashMap<>();
+        HashMap<String,HashMap<String,String>> cities;
 
-        HashMap<String,HashMap<String,String>> cities = HelperUtil.readProperties(getResources()
-                        .openRawResource(R.raw.cities),CityLinearViewModel.FIELD,
+        HttpGETClient httpGETClient = new HttpGETClient();
+        if (!httpGETClient.establishConnection("http://autoiot2019-20.000webhostapp.com/" +
+                "FoodApp/cities.properties")) {
+            return null;
+        }
+        cities = HelperUtil.readProperties(httpGETClient.getInputStream(),CityLinearViewModel.FIELD,
                 CityLinearViewModel.ATTR_LIST);
+        httpGETClient.closeConnection();
 
         for (String key : cities.keySet())
         {
@@ -80,10 +87,15 @@ public class OrderPage extends AppCompatActivity {
             {
                 HashMap<String,String> cityMap = cityIDMap.get(cityId);
                 if (!cityMap.containsKey(order.hotelId)) {
-                    Integer resourceID = (Integer) HelperUtil.getFieldFromClass(R.raw.class,null,cityId);
-                    HashMap<String,HashMap<String,String>> hotels = HelperUtil.readProperties(getResources()
-                                    .openRawResource(resourceID),HotelLinearViewModel.FIELD,
+                    HttpGETClient httpGETClient1 = new HttpGETClient();
+                    if (!httpGETClient1.establishConnection("http://autoiot2019-20.000webhostapp.com/" +
+                            "FoodApp/"+cityId+".properties")) {
+                        return null;
+                    }
+                    HashMap<String,HashMap<String,String>> hotels = HelperUtil.readProperties(httpGETClient1.getInputStream(),
+                            HotelLinearViewModel.FIELD,
                             HotelLinearViewModel.ATTR_LIST);
+                    httpGETClient1.closeConnection();
                     for (String key:hotels.keySet())
                     {
                         HashMap<String,String> hotel = hotels.get(key);

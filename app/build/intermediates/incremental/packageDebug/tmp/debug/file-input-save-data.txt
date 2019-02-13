@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Feb 10 00:07:01 IST 2019
+#Wed Feb 13 16:52:34 IST 2019
 7.path=lib/armeabi/libpl_droidsonroids_gif.so
 2.base=E\:\\AndroidProjects\\FoodApp\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 5.set=NATIVE_RESOURCE
