@@ -129,6 +129,7 @@ public class OrderPage extends AppCompatActivity {
                 childMap.put(OrderLinearViewModel.ATTR_LIST.get(2),"Rs."+order.netCost);
                 childMap.put(OrderLinearViewModel.ATTR_LIST.get(3),builder.toString());
                 childMap.put(OrderLinearViewModel.ATTR_LIST.get(4),order.userId);
+                childMap.put(OrderLinearViewModel.ATTR_LIST.get(5),order.timeStamp);
 
                 map.put(String.valueOf(order.orderId),childMap);
             }

@@ -396,6 +396,9 @@ color button_material_light
 color colorAccent
 color colorGray
 color colorLineBlue
+color colorLineDarkGreen
+color colorLineGreen
+color colorLineLiteBlue
 color colorPrimary
 color colorPrimaryDark
 color dim_foreground_disabled_material_dark
@@ -536,7 +539,10 @@ dimen activity_login_edit_text_padding
 dimen activity_login_edit_text_width
 dimen activity_login_margin
 dimen activity_registration_layout_margin
+dimen activity_room_configuration_book_success_padding
+dimen activity_room_configuration_text_size
 dimen activity_vertical_margin
+dimen button_menu_chooser_width
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -598,6 +604,7 @@ dimen tooltip_precise_anchor_threshold
 dimen tooltip_vertical_padding
 dimen tooltip_y_offset_non_touch
 dimen tooltip_y_offset_touch
+dimen view_history_button_size
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -682,8 +689,12 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable appbackground
+drawable background
+drawable click_background
 drawable gray_background
 drawable green_border_rectangle
+drawable green_tick
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable loading
@@ -741,6 +752,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id breakfast
 id buttonPanel
 id center
 id center_horizontal
@@ -762,6 +774,7 @@ id decor_content_parent
 id decrementButton
 id default_activity_button
 id dimensions
+id dinner
 id direct
 id disableHome
 id edit_query
@@ -776,6 +789,7 @@ id forever
 id gone
 id group_divider
 id groups
+id headerText
 id home
 id homeAsUp
 id hotelTitleTextVView
@@ -803,6 +817,7 @@ id line1
 id line3
 id listMode
 id list_item
+id lunch
 id message
 id middle
 id multiply
@@ -817,6 +832,7 @@ id orderHotelCityView
 id orderHotelNameView
 id orderItemView
 id orderNetCostView
+id orderTimeView
 id orderUserIDView
 id orderViewParentLayout
 id packed
@@ -926,7 +942,9 @@ layout activity_item_page
 layout activity_login
 layout activity_order_page
 layout activity_registration
+layout booking_success
 layout layout_loading
+layout layout_menu_chooser
 layout layout_order_view
 layout layout_selected_items
 layout notification_action
@@ -986,6 +1004,7 @@ string allMandatoryFields
 string appName
 string app_name
 string area
+string bookingSuccess
 string breakfast
 string city
 string dBCreationFailed
@@ -1019,11 +1038,13 @@ string somethingWentWrong
 string somethingWentWrongCommon
 string state
 string status_bar_notification_info_overflow
+string timeStampText
 string totalCost
 string userAddedSuccessfully
 string userAlreadExists
 string userID
 string userName
+string viewHistory
 string violationString
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

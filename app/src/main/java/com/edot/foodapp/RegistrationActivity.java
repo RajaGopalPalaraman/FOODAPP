@@ -25,8 +25,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void registerUser(final View view) {
 
-        view.setClickable(false);
-
         EditText nameView = findViewById(R.id.userName);
         EditText userIDView = findViewById(R.id.userRegisteredID);
         EditText emailView = findViewById(R.id.emailID);
@@ -69,6 +67,7 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         else
         {
+            view.setClickable(false);
             new AsyncTask<Void, Void, String>() {
                 @Override
                 protected String doInBackground(Void... voids) {

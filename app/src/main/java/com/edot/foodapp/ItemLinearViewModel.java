@@ -39,9 +39,13 @@ public class ItemLinearViewModel extends LinearViewModel {
     private List<ItemDataModel> lunchItems = new ArrayList<>();
     private List<ItemDataModel> dinnerItems = new ArrayList<>();
 
+    private boolean showBreakFast;
+    private boolean showLunch;
+    private boolean showDinner;
+
     private ItemSelectionController itemSelectionController;
 
-    ItemLinearViewModel(Context context,ItemSelectionController itemSelectionController) {
+    ItemLinearViewModel(Context context,ItemSelectionController itemSelectionController,boolean b1,boolean b2,boolean b3) {
         super(context);
         this.itemSelectionController = itemSelectionController;
 
@@ -62,6 +66,10 @@ public class ItemLinearViewModel extends LinearViewModel {
         dinnerLayout = new LinearLayout(context);
         dinnerLayout.setOrientation(LinearLayout.VERTICAL);
         dinnerLayout.addView(textView);
+
+        showBreakFast = b1;
+        showLunch = b2;
+        showDinner = b3;
     }
 
     public ItemSelectionController getItemSelectionController() {
@@ -153,17 +161,23 @@ public class ItemLinearViewModel extends LinearViewModel {
         layoutParams.topMargin = 10;
         layoutParams.bottomMargin = 10;
         view.setLayoutParams(layoutParams);
-        linearLayout.addView(breakFastLayout);
-        linearLayout.addView(view);
-        linearLayout.addView(lunchLayout);
-        view = new View(context);
-        view.setBackgroundResource(R.color.colorLineBlue);
-        layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,1);
-        layoutParams.topMargin = 10;
-        layoutParams.bottomMargin = 10;
-        view.setLayoutParams(layoutParams);
-        linearLayout.addView(view);
-        linearLayout.addView(dinnerLayout);
+        if (showBreakFast) {
+            linearLayout.addView(breakFastLayout);
+            linearLayout.addView(view);
+        }
+        if (showLunch) {
+            linearLayout.addView(lunchLayout);
+            view = new View(context);
+            view.setBackgroundResource(R.color.colorLineBlue);
+            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+            layoutParams.topMargin = 10;
+            layoutParams.bottomMargin = 10;
+            view.setLayoutParams(layoutParams);
+            linearLayout.addView(view);
+        }
+        if (showDinner) {
+            linearLayout.addView(dinnerLayout);
+        }
         return linearLayout;
     }
 

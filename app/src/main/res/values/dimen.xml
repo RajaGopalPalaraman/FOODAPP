@@ -41,4 +41,10 @@
     <dimen name="layout_order_first_line_separator_width">1dp</dimen>
     <dimen name="layout_order_second_line_separator_width">2dp</dimen>
     <dimen name="layout_order_view_final_line_margin_top">10dp</dimen>
+    <!-- View History button padding and margins -->
+    <dimen name="view_history_button_size">50dp</dimen>
+    <!-- Room booking success message padding -->
+    <dimen name="activity_room_configuration_book_success_padding">10dp</dimen>
+    <dimen name="activity_room_configuration_text_size">20sp</dimen>
+    <dimen name="button_menu_chooser_width">150dp</dimen>
 </resources>

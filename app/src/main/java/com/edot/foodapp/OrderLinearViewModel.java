@@ -13,14 +13,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class OrderLinearViewModel extends LinearViewModel {
+public final class OrderLinearViewModel extends LinearViewModel {
 
     public static final List<String> ATTR_LIST = Arrays.asList(
             "name",
             "city",
             "cost",
             "items",
-            "userId"
+            "userId",
+            "timeStamp"
     );
 
     protected OrderLinearViewModel(Context context) {
@@ -41,7 +42,11 @@ public class OrderLinearViewModel extends LinearViewModel {
         textView = view.findViewById(R.id.orderItemView);
         textView.setText(hashMap.get(ATTR_LIST.get(3)));
         textView = view.findViewById(R.id.orderUserIDView);
+        textView.setVisibility(View.VISIBLE);
         textView.setText(hashMap.get(ATTR_LIST.get(4)));
+        textView = view.findViewById(R.id.orderTimeView);
+        textView.setVisibility(View.VISIBLE);
+        textView.setText(context.getResources().getString(R.string.timeStampText,hashMap.get(ATTR_LIST.get(5))));
 
         return view;
     }

@@ -31,7 +31,8 @@ public class OrderHelper {
         paramsMap.put("userID", userID);
         paramsMap.put("orderDetails", orderDetails);
         paramsMap.put("totalCost", String.valueOf(total));
-        if (httpPOSTClient.establishConnection("http://autoiot2019-20.000webhostapp.com/FoodApp/makeOrder.php",paramsMap))
+        if (httpPOSTClient.establishConnection("http://autoiot2019-20.000webhostapp.com/FoodApp/makeOrder.php"
+                ,paramsMap))
         {
             InputStream inputStream = httpPOSTClient.getInputStream();
             byte[] bytes = new byte[10];
@@ -51,10 +52,21 @@ public class OrderHelper {
 
     public static List<OrderedDataModel> getOrdersFromDB(Context context)
     {
+        return getOrdersFromDB(context,null);
+    }
+
+    public static List<OrderedDataModel> getOrdersFromDB(Context context,String userID)
+    {
         List<OrderedDataModel> orderList = null;
-        HttpGETClient httpGETClient = new HttpGETClient();
+        HttpPOSTClient httpGETClient = new HttpPOSTClient();
+        String url = "http://autoiot2019-20.000webhostapp.com/FoodApp/viewOrderList.php";
+        HashMap<String,String> paramsMap = new HashMap<>();
+        if (userID != null)
+        {
+            paramsMap.put("user",userID);
+        }
         if (httpGETClient.establishConnection
-                ("http://autoiot2019-20.000webhostapp.com/FoodApp/viewOrderList.php"))
+                (url,paramsMap))
         {
             InputStream inputStream = httpGETClient.getInputStream();
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -71,12 +83,15 @@ public class OrderHelper {
                     for (String s : data.split("##")) {
                         OrderedDataModel order = new OrderedDataModel();
                         String[] s1 = s.split("#");
-                        order.orderId = Integer.parseInt(s1[0]);
-                        order.hotelId = s1[1];
-                        order.userId = s1[2];
-                        order.orderedItems = s1[3];
-                        order.netCost = Integer.parseInt(s1[4]);
-                        orderList.add(order);
+                        if (s1.length == 6) {
+                            order.orderId = Integer.parseInt(s1[0]);
+                            order.hotelId = s1[1];
+                            order.userId = s1[2];
+                            order.orderedItems = s1[3];
+                            order.timeStamp = s1[4];
+                            order.netCost = Integer.parseInt(s1[5]);
+                            orderList.add(order);
+                        }
                     }
                     return orderList;
                 }
@@ -96,6 +111,7 @@ public class OrderHelper {
         public String userId;
         public String orderedItems;
         public int netCost;
+        public String timeStamp;
     }
 
     public static class ItemsListModel

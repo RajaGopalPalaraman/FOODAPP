@@ -1,5 +1,6 @@
 package com.edot.foodapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,5 +53,10 @@ public class CityPage extends AppCompatActivity {
                 }
             }
         }.execute();
+    }
+    public void onHistory(View view)
+    {
+        Intent intent = new Intent(this,UserHistoryActivity.class);
+        startActivity(intent);
     }
 }

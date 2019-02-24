@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.edot.foodapp.UserHistoryActivity" />
         <activity
             android:name="com.edot.foodapp.LoginActivity"
             android:screenOrientation="portrait" >

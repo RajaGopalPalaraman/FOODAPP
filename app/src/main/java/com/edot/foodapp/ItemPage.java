@@ -24,16 +24,18 @@ public class ItemPage extends AppCompatActivity {
 
     private ItemSelectionController controller;
     private String hotelID;
+    private String hotelName;
+    private String hotelComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_loading);
+        setContentView(R.layout.layout_menu_chooser);
         controller = new ItemSelectionController(this);
         Intent intent = getIntent();
         hotelID = (intent == null)? null : intent.getStringExtra(HotelLinearViewModel.ATTR_LIST.get(0));
-        final String hotelName = (intent == null)? null : intent.getStringExtra(HotelLinearViewModel.ATTR_LIST.get(1));
-        final String hotelComment = (intent == null)? null : intent.getStringExtra(HotelLinearViewModel.ATTR_LIST.get(2));
+        hotelName = (intent == null)? null : intent.getStringExtra(HotelLinearViewModel.ATTR_LIST.get(1));
+        hotelComment = (intent == null)? null : intent.getStringExtra(HotelLinearViewModel.ATTR_LIST.get(2));
 
         Log.d(AppConstants.LOG_TAG,"Id : " + hotelID);
         Log.d(AppConstants.LOG_TAG,"Name : " + hotelName);
@@ -49,7 +51,50 @@ public class ItemPage extends AppCompatActivity {
             finish();
             return;
         }
+    }
+
+    public void navigateToBillPage(final View view)
+    {
+        Log.d(AppConstants.LOG_TAG,"Proceed button clicked : "+AppConstants.currentLoggedInUserID);
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                setContentView(R.layout.layout_loading);
+            }
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                return OrderHelper.placeOrder(ItemPage.this,AppConstants.currentLoggedInUserID,
+                        hotelID,controller.getListOfSelectedItems(),controller.getTotal());
+            }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+
+                if (aBoolean)
+                {
+                    setContentView(R.layout.booking_success);
+                }
+                else
+                {
+                    Toast.makeText(ItemPage.this, R.string.orderFailed, Toast.LENGTH_SHORT).show();
+                    recreate();
+                }
+            }
+        }.execute();
+    }
+
+    private void showItems(final boolean b1,final boolean b2,final boolean b3)
+    {
         new AsyncTask<String,Void,View>(){
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                setContentView(R.layout.layout_loading);
+            }
+
             @Override
             protected LinearLayout doInBackground(String... strings) {
                 HttpGETClient httpGETClient = new HttpGETClient();
@@ -59,8 +104,8 @@ public class ItemPage extends AppCompatActivity {
                                     .getInputStream(), ItemLinearViewModel.FIELD,
                             ItemLinearViewModel.ATTR_LIST);
                     httpGETClient.closeConnection();
-                    LinearLayout l = (LinearLayout) new ItemLinearViewModel(ItemPage.this, controller)
-                            .renderMap(map);
+                    LinearLayout l = (LinearLayout) new ItemLinearViewModel(ItemPage.this,
+                            controller,b1,b2,b3).renderMap(map);
                     return l;
                 }
                 return null;
@@ -89,32 +134,8 @@ public class ItemPage extends AppCompatActivity {
         }.execute(hotelID);
     }
 
-    public void navigateToBillPage(final View view)
-    {
-        view.setClickable(false);
-        Log.d(AppConstants.LOG_TAG,"Proceed button clicked : "+AppConstants.currentLoggedInUserID);
-        new AsyncTask<Void, Void, Boolean>() {
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                return OrderHelper.placeOrder(ItemPage.this,AppConstants.currentLoggedInUserID,
-                        hotelID,controller.getListOfSelectedItems(),controller.getTotal());
-            }
-
-            @Override
-            protected void onPostExecute(Boolean aBoolean) {
-                super.onPostExecute(aBoolean);
-                view.setClickable(true);
-                if (aBoolean)
-                {
-                    Toast.makeText(ItemPage.this, R.string.orderPlaced, Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                else
-                {
-                    Toast.makeText(ItemPage.this, R.string.orderFailed, Toast.LENGTH_SHORT).show();
-                }
-            }
-        }.execute();
+    public void onMenu(View view) {
+        int id = view.getId();
+        showItems(id == R.id.breakfast, id == R.id.lunch, id == R.id.dinner);
     }
-
 }

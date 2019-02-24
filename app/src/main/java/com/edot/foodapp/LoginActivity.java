@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLogin(final View view) {
-        view.setClickable(false);
         if(!(userID.getText().toString().isEmpty() || password.getText().toString().isEmpty())) {
             Log.d(AppConstants.LOG_TAG, "@onLogin");
             if ("admin".equals(userID.getText().toString())) {
@@ -55,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             else
             {
+                view.setClickable(false);
                 new AsyncTask<Void, Void, String>() {
                     @Override
                     protected String doInBackground(Void... voids) {

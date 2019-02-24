@@ -71,4 +71,11 @@ public class HotelsPage extends AppCompatActivity {
         }.execute(RClassFieldName);
 
     }
+
+    public void onHistory(View view)
+    {
+        Intent intent = new Intent(this,UserHistoryActivity.class);
+        startActivity(intent);
+    }
+
 }

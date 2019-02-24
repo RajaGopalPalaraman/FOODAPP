@@ -41,4 +41,7 @@
     <string name="orderPlaced">Order Placed Successfully!!</string>
     <string name="orderFailed">Order Failed!! Retry…</string>
     <string name="noOrderFound">Nothing ordered</string>
+    <string name="viewHistory">View History</string>
+    <string name="timeStampText">Time: %s</string>
+    <string name="bookingSuccess">Order Success</string>
 </resources>
